@@ -86,7 +86,7 @@ export const profile = async (req, res) => {
 };
 
 export const verifyToken = async (req, res) => {
-  const{token} = req.body;
+  const{token} = req.params;
   console.log('ESTE', token)
   if(!token) return res.status(401).json({ message: "Unauthorized" });
 
