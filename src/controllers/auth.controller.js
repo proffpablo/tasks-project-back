@@ -49,8 +49,6 @@ export const login = async (req, res) => {
     if (!isMatch) return res.status(400).json({ message: "Incorrect password" })
 
     const token = await createAccessToken({id: userFound._id});
-    console.log(userFound)
-    console.log(token);
     res.cookie('token', token);
     res.json({
       id: userFound._id,
@@ -89,7 +87,7 @@ export const profile = async (req, res) => {
 
 export const verifyToken = async (req, res) => {
   const{token} = req.cookies;
-  console.log(req)
+  console.log('ESTE', req)
   if(!token) return res.status(401).json({ message: "Unauthorized" });
 
   jwt.verify(token, TOKEN_SECRET, async (err, user) => {
