@@ -31,6 +31,7 @@ export const register = async (req, res) => {
       email: userSaved.email,
       createdAt : userSaved.createdAt,
       updatedAt: userSaved.updatedAt,
+      token: token,
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
