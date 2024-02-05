@@ -29,6 +29,7 @@ export const register = async (req, res) => {
     const cookieOption = {
       expires: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000),
       path: "/",
+      sameSite: 'lax',
     }
 
     res.cookie('token', token, cookieOption);
