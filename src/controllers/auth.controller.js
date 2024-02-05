@@ -60,6 +60,7 @@ export const login = async (req, res) => {
     const cookieOption = {
       expires: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000),
       path: "/",
+      sameSite: 'lax',
     }
 
     res.cookie('token', token, cookieOption);
@@ -77,7 +78,8 @@ export const login = async (req, res) => {
 
 export const logout = (req, res) => {
   res.cookie('token', "", {
-    expires: new Date(0)
+    expires: new Date(0),
+    sameSite: 'lax',
   });
   return res.sendStatus(200);
 };
