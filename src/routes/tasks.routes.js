@@ -9,6 +9,7 @@ import {
 } from "../controllers/tasks.controller.js";
 import {validateSchema} from "../middlewares/validator.middleware.js";
 import {createTaskSchema} from "../schemas/task.schema.js";
+import cookieParser from "cookie-parser";
 
 const router = Router();
 
