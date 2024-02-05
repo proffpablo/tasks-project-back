@@ -12,6 +12,8 @@ import {registerSchema, loginSchema} from "../schemas/auth.schema.js";
 
 const router = Router()
 
+const cookieParser = require("cookie-parser")
+
 router.post('/register', validateSchema(registerSchema), register);
 
 router.post('/login',validateSchema(loginSchema), login);
@@ -21,5 +23,7 @@ router.post('/logout', logout);
 router.get('/verify', verifyToken);
 
 router.get('/profile', authRequired, profile);
+
+router.use(cookieParser());
 
 export default router

@@ -12,6 +12,10 @@ import {createTaskSchema} from "../schemas/task.schema.js";
 
 const router = Router();
 
+const cookieParser = require("cookie-parser");
+
+router.use(cookieParser());
+
 router.get('/tasks', authRequired, getTasks);
 router.get('/tasks/:id', authRequired, getTask);
 
