@@ -13,8 +13,6 @@ import cookieParser from "cookie-parser";
 
 const router = Router();
 
-const cookieParser = require("cookie-parser");
-
 router.use(cookieParser());
 
 router.get('/tasks', authRequired, getTasks);

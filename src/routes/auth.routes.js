@@ -13,8 +13,6 @@ import cookieParser from "cookie-parser";
 
 const router = Router()
 
-const cookieParser = require("cookie-parser")
-
 router.post('/register', validateSchema(registerSchema), register);
 
 router.post('/login',validateSchema(loginSchema), login);
