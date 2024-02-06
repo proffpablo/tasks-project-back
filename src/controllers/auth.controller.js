@@ -34,7 +34,7 @@ export const register = async (req, res) => {
     }
 
     res.cookie('token', token, cookieOption);
-    console.log("\nCookie seteada con el token: " + res.cookie);
+    console.log("\nCookie seteada con el token: " + res.cookie.token);
     res.json({
       id: userSaved._id,
       username: userSaved.username,
