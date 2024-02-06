@@ -6,6 +6,13 @@ import dotenv from 'dotenv'
 
 dotenv.config();
 
+const cookieOption = {
+  expires: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000),
+  HttpOnly,
+  Secure,
+  sameSite: 'none',
+}
+
 export const register = async (req, res) => {
   const {email, password, username} = req.body
 
@@ -25,12 +32,6 @@ export const register = async (req, res) => {
   
     const userSaved = await newUser.save();
     const token = await createAccessToken({id: userSaved._id});
- 
-    const cookieOption = {
-      expires: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000),
-      path: "/",
-      sameSite: 'lax',
-    }
 
     res.cookie('token', token, cookieOption);
     res.json({
@@ -56,12 +57,6 @@ export const login = async (req, res) => {
     if (!isMatch) return res.status(400).json({ message: "Incorrect password" })
 
     const token = await createAccessToken({id: userFound._id});
-
-    const cookieOption = {
-      expires: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000),
-      path: "/",
-      sameSite: 'lax',
-    }
 
     res.cookie('token', token, cookieOption);
     res.json({
