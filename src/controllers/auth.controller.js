@@ -33,7 +33,6 @@ export const register = async (req, res) => {
     }
 
     res.cookie('token', token, cookieOption);
-    console.log("\nResponse con token: " + res);
     res.json({
       id: userSaved._id,
       username: userSaved.username,
