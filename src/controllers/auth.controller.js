@@ -8,8 +8,6 @@ dotenv.config();
 
 const cookieOption = {
   expires: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000),
-  HttpOnly: true,
-  Secure: true,
   sameSite: 'none',
 }
 
