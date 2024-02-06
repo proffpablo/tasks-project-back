@@ -25,6 +25,7 @@ export const register = async (req, res) => {
   
     const userSaved = await newUser.save();
     const token = await createAccessToken({id: userSaved._id});
+    console.log("Creacion de token: " + token);
  
     const cookieOption = {
       expires: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000),
@@ -33,6 +34,7 @@ export const register = async (req, res) => {
     }
 
     res.cookie('token', token, cookieOption);
+    console.log("\nCookie seteada con el token: ");
     res.json({
       id: userSaved._id,
       username: userSaved.username,
