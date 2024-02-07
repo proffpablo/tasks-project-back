@@ -93,7 +93,7 @@ export const verifyToken = async (req, res) => {
 
   const authorization = req.get('authorization');
 
-  console("Header: " +authorization);
+  console.log("Header: " +authorization);
 
   let token = '';
 
