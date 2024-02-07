@@ -20,7 +20,7 @@ export const createTask = async (req, res) => {
 			date,
 			user: req.user.id
 		});
-		const savedTask = await  newTask.save();
+		const savedTask = await newTask.save();
 		res.json(savedTask);
 	} catch (error) {
 		return res.status(500).json({message: "Something went wrong"});

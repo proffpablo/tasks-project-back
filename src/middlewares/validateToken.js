@@ -5,8 +5,7 @@ dotenv.config();
 
 export const authRequired = (req, res, next) => {
 
-    const authorization = req.get('authorization');
-    console.log("authRequired Header: " + authorization);
+    const authorization = req.get('Authorization');
     let token = '';
 
     if (authorization && authorization.toLowerCase().startsWith('bearer')) {
