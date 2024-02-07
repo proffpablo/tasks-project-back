@@ -26,7 +26,7 @@ export const register = async (req, res) => {
     const userSaved = await newUser.save();
     const token = await createAccessToken({id: userSaved._id});
 
-    res.setHeader('Authorization', 'Bearer ' + token);
+    res.set('Authorization', 'Bearer ' + token);
 
     res.json({
       id: userSaved._id,
