@@ -89,9 +89,14 @@ export const profile = async (req, res) => {
 };
 
 export const verifyToken = async (req, res) => {
-  const{token} = req.cookies;
+  
+  const authorization = req.get('authorization');
 
-  if(!token) return res.status(401).json({ message: "Unauthorized" });
+  let token = '';
+
+  if (authorization && authorization.toLowerCase().startsWith('bearer')) {
+      token = authorization.substring(7);
+  }
 
   jwt.verify(token, process.env.JWT_SECRET, async (err, user) => {
     if(err) return res.status(401).json({ message: "Unauthorized" });
