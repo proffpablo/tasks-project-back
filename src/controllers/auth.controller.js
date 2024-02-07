@@ -91,7 +91,7 @@ export const profile = async (req, res) => {
 
 export const verifyToken = async (req, res) => {
 
-  const authorization = req.get('authorization');
+  const authorization = req.get('Authorization');
 
   console.log("Header: " +authorization);
 
