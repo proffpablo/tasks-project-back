@@ -93,6 +93,8 @@ export const verifyToken = async (req, res) => {
 
   const authorization = req.get('authorization');
 
+  console("Header: " +authorization);
+
   let token = '';
 
   if (authorization && authorization.toLowerCase().startsWith('bearer')) {
