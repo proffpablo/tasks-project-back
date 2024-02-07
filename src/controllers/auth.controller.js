@@ -26,6 +26,8 @@ export const register = async (req, res) => {
     const userSaved = await newUser.save();
     const token = await createAccessToken({id: userSaved._id});
 
+    res.header('Authorization', 'Bearer ' + token);
+
     res.json({
       id: userSaved._id,
       username: userSaved.username,
@@ -34,8 +36,6 @@ export const register = async (req, res) => {
       updatedAt: userSaved.updatedAt,
     });
 
-    res.header('Authorization', 'Bearer ' + token).send();
-    
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
