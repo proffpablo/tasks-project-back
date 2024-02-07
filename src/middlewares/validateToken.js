@@ -5,8 +5,12 @@ dotenv.config();
 
 export const authRequired = (req, res, next) => {
 
-    const {token} = req.cookies;
-    if (!token) return res.status(401).json({ message: "No token, authorization denied" });
+    const authorization = req.get('authorization');
+    let token = '';
+
+    if (authorization && authorization.toLowerCase().startsWith('bearer')) {
+        token = authorization.substring(7);
+    }
 
     jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
         if (err) return res.status(403).json({ message: "Invalid token" }); 
