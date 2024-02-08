@@ -18,6 +18,7 @@ app.use(cors({
         'http://localhost:5173/tasks',
         'http://localhost:5173/verify',
     ],
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
     exposedHeaders: 'Authorization',
 }));
