@@ -11,7 +11,13 @@ const app = express();
 app.use(cookieParser());
 
 app.use(cors({
-    origin: '*',
+    origin: [
+        'http://localhost:5173',
+        'http://localhost:5173/login',
+        'http://localhost:5173/register',
+        'http://localhost:5173/tasks',
+        'http://localhost:5173/verify',
+    ],
     credentials: true,
     exposedHeaders: 'Authorization',
 }));
