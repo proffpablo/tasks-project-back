@@ -13,7 +13,7 @@ import { delay } from "../middlewares/delay.js";
 
 const router = Router();
 
-router.get('/tasks', delay, authRequired, getTasks);
+router.get('/tasks', authRequired, getTasks);
 router.get('/tasks/:id', authRequired, getTask);
 
 router.post(
