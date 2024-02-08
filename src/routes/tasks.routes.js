@@ -9,10 +9,11 @@ import {
 } from "../controllers/tasks.controller.js";
 import {validateSchema} from "../middlewares/validator.middleware.js";
 import {createTaskSchema} from "../schemas/task.schema.js";
+import { delay } from "../middlewares/delay.js";
 
 const router = Router();
 
-router.get('/tasks', authRequired, getTasks);
+router.get('/tasks', delay, authRequired, getTasks);
 router.get('/tasks/:id', authRequired, getTask);
 
 router.post(
