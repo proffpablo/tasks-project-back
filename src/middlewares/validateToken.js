@@ -5,8 +5,6 @@ dotenv.config();
 
 export const authRequired = (req, res, next) => {
 
-    req.user = user
-
     const authorization = req.get('Authorization');
     let token = '';
 
@@ -15,7 +13,9 @@ export const authRequired = (req, res, next) => {
     }
 
     jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-        if (err) return res.status(403).json({ message: "Invalid token" }); 
+        if (err) return res.status(403).json({ message: "Invalid token" });
+
+        req.user = user
 
         next();
     });
