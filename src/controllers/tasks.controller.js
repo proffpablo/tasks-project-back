@@ -1,8 +1,11 @@
 import Task from "../models/task.model.js";
+import jwt from 'jsonwebtoken';
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export const getTasks = async (req, res) => {
 	try {
-		console.log("\n\nRequest user: " + req.user);
 		if(req.user === undefined) {
 			const authorization = req.get('Authorization');
 
