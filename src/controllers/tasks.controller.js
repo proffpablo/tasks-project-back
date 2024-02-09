@@ -6,7 +6,7 @@ export const getTasks = async (req, res) => {
 			const authorization = req.get('Authorization');
 
 			let token = '';
-			
+
 			if (authorization && authorization.toLowerCase().startsWith('bearer')) {
 				token = authorization.substring(7);
 			}
@@ -15,8 +15,6 @@ export const getTasks = async (req, res) => {
 				if (err) return res.status(403).json({ message: "Invalid token" });
 		
 				req.user = user
-		
-				next();
 			});
 		}
 		const tasks = await Task.find({
