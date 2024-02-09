@@ -12,12 +12,8 @@ app.use(cookieParser());
 
 app.use(cors({
     origin: [
-        'http://localhost:5173',
-        'http://localhost:5173/',
-        'http://localhost:5173/login',
-        'http://localhost:5173/register',
-        'http://localhost:5173/tasks',
-        'http://localhost:5173/verify',
+        'https://tasks-fullstack-front.onrender.com',
+        'https://tasks-fullstack-front.onrender.com/'
     ],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
