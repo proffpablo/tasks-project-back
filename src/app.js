@@ -12,8 +12,12 @@ app.use(cookieParser());
 
 app.use(cors({
     origin: [
-        'https://tasks-fullstack-front.onrender.com',
-        'https://tasks-fullstack-front.onrender.com/'
+        'https://tasks-fullstack-front.onrender.com/',
+        'https://tasks-fullstack-front.onrender.com/',
+        'https://tasks-fullstack-front.onrender.com/login',
+        'https://tasks-fullstack-front.onrender.com/register',
+        'https://tasks-fullstack-front.onrender.com/tasks',
+        'https://tasks-fullstack-front.onrender.com/verify',
     ],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
