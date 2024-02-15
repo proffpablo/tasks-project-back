@@ -6,21 +6,6 @@ dotenv.config();
 
 export const getTasks = async (req, res) => {
 	try {
-		if(req.user === undefined) {
-			const authorization = req.get('Authorization');
-
-			let token = '';
-
-			if (authorization && authorization.toLowerCase().startsWith('bearer')) {
-				token = authorization.substring(7);
-			}
-		
-			jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-				if (err) return res.status(403).json({ message: "Invalid token" });
-		
-				req.user = user
-			});
-		}
 		const tasks = await Task.find({
 			user: req.user.id
 		}).populate('user');
